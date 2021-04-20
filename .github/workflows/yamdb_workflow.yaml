@@ -64,3 +64,6 @@ jobs:
             sudo docker pull delikatesla/api_yamdb:v1.0
             sudo docker stop $(sudo docker ps -a -q)
             sudo docker run --rm -d -p 5000:5000 delikatesla/api_yamdb:v1.0
+            sudo docker cp $(sudo docker ps -a -q):code code
+            cd code
+            sudo docker-compose up -d
