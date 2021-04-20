@@ -62,5 +62,5 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
             sudo docker pull delikatesla/api_yamdb:v1.0
-            sudo docker-compose down
-            sudo docker-compose up -d
+            sudo docker stop $(sudo docker ps -a -q)
+            sudo docker run --rm -d -p 5000:5000 delikatesla/api_yamdb
