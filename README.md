@@ -1,3 +1,5 @@
+![yamdb%20workflow Actions Status](https://github.com/delikatesla/yamdb_final/workflows/yamdb%20workflow/badge.svg)
+
 # **YAMDB**
 **REST API для сервиса YaMDB** — базы данных о фильмах, книгах и музыке.
 ***
@@ -103,7 +105,7 @@
 `/api/v1/titles/{titles_id}/ (GET, PATCH, DELETE)`
 
 ***
-## Запуск проекта (Docker)  
+## Запуск проекта локально  
 1. Запустить docker-compose:
 
 `docker-compose up`
@@ -121,6 +123,37 @@
 
 `docker-compose exec web python manage.py createsuperuser`
 
+5. Соберите статику командой:
+
+`docker-compose exec web python manage.py collectstatic`
+
+## Деплой на удаленный сервер
+Для запуска проекта на удаленном сервере необходимо:
+- скопировать на сервер файлы `docker-compose.yaml`, `.env` и папку `nginx` командами:
+```
+scp docker-compose.yaml  <user>@<server-ip>:
+scp .env <user>@<server-ip>:
+scp -r nginx/ <user>@<server-ip>:
+
+```
+- создать переменные окружения в разделе `secrets` настроек текущего репозитория:
+```
+DOCKER_PASSWORD # Пароль от Docker Hub
+DOCKER_USERNAME # Логин от Docker Hub
+HOST # Публичный ip адрес сервера
+USER # Пользователь зарегистрированный на сервере
+PASSPHRASE # Если ssh-ключ защищен фразой-паролем
+SSH_KEY # Приватный ssh-ключ
+TELEGRAM_TO # ID телеграм-аккаунта
+TELEGRAM_TOKEN # Токен бота
+```
+
+### После каждого обновления репозитория (`git push`) будет происходить:
+1. Проверка кода на соответствие стандарту PEP8 (с помощью пакета flake8) и запуск pytest из репозитория yamdb_final
+2. Сборка и доставка докер-образов на Docker Hub.
+3. Автоматический деплой.
+4. Отправка уведомления в Telegram.
+
 ***
 ## **Технологии**
 - [Python](https://www.python.org/)
@@ -135,7 +168,8 @@
   + система подтверждения e-mail, поля.
 - [delikatesla](https://github.com/Delikatesla) - категории (Categories), жанры (Genres) и произведения (Titles):
   + модели и view;
-  + эндпойнты.
+  + эндпойнты;
+  + докеризация, CI.
 - [lenprofy](https://github.com/lenprofy) - отзывы (Review) и комментарии (Comments):
   + модели и view;
   + эндпойнты;
