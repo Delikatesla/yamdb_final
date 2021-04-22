@@ -62,7 +62,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           source: "./.env, nginx/nginx.conf, ./docker-compose.yaml"
-          target: "/home/yc-user/code"
+          target: "~/code"
 
 
       - name: executing remote ssh commands to deploy
