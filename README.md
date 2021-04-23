@@ -165,6 +165,8 @@ TELEGRAM_TOKEN # Токен бота
 - [Django](https://www.djangoproject.com/)
 - [Django REST framework](https://www.django-rest-framework.org/)
 - [DRF Simple JWT](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/)
+- [Docker](https://www.docker.com/)
+- [NGINX](https://nginx.org/ru/)
 ***
 ## **Участники**
 - [timrock23](https://github.com/TimRock23) - управление пользователями (Auth и Users):
