@@ -2,6 +2,7 @@
 https://github.com/AlexanderNkn/yamdb_final/workflows/yamdbworkflow/badge.svg
 --->
 ![yamdb%20workflow Actions Status](https://github.com/delikatesla/yamdb_final/workflows/yamdb%20workflow/badge.svg)
+[![api_yamdb workflow](https://github.com/Delikatesla/yamdb_final/actions/workflows/yamdb_workflow.yaml/badge.svg?branch=master)](https://github.com/Delikatesla/yamdb_final/actions/workflows/yamdb_workflow.yaml)
 
 # **YAMDB**
 **REST API для сервиса YaMDB** — базы данных о фильмах, книгах и музыке.
